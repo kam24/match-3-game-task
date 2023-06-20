@@ -128,6 +128,7 @@ MonoBehaviour:
   _tileData: {fileID: 11400000, guid: a8d981a8cdfffe44196c7c83dab585c7, type: 2}
   _bleach: {fileID: 619876887653481292}
   _hiddenColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
+  _layer: -1
 --- !u!1 &1844165479477038213
 GameObject:
   m_ObjectHideFlags: 0

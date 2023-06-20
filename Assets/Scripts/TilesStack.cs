@@ -19,6 +19,7 @@ public class TilesStack : MonoBehaviour, IApplyButton
 
     public void Apply()
     {
+#if UNITY_EDITOR
         var transforms = transform.Cast<Transform>().ToList();
         transforms.ForEach(t =>
         {
@@ -37,6 +38,7 @@ public class TilesStack : MonoBehaviour, IApplyButton
             newTile.SetLayer(layer--);
             lastTilePosition = newTile.transform.position;
         });
+#endif
     }
 
     private void Awake()

@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3235462447113711811}
+  - component: {fileID: 6341603517537593120}
   - component: {fileID: 7886371027452811641}
   - component: {fileID: 7968303907112141676}
   - component: {fileID: 2595335945802615881}
@@ -19,7 +19,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3235462447113711811
+--- !u!4 &6341603517537593120
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,6 +128,7 @@ MonoBehaviour:
   _tileData: {fileID: 11400000, guid: b15316eccc97e394abec319d850d1c4c, type: 2}
   _bleach: {fileID: 4668411967310718327}
   _hiddenColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
+  _layer: -1
 --- !u!1 &4322535671689052146
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +158,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3235462447113711811}
+  m_Father: {fileID: 6341603517537593120}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4668411967310718327

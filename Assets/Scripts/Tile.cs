@@ -101,7 +101,7 @@ public class Tile : MonoBehaviour, IApplyButton
         _collider = GetComponent<BoxCollider2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _bounds = _collider.bounds;
-        if (_layer < 0)
+        if (_layer <= 0)
             SetLayer(GetComponentInParent<TilemapRenderer>().sortingOrder);
         OnValidate();
     }

@@ -212,3 +212,4 @@ MonoBehaviour:
   _tileData: {fileID: 0}
   _bleach: {fileID: 4263058829971612867}
   _hiddenColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
+  _layer: -1

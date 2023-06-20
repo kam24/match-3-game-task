@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,6 +15,8 @@ namespace Assets.Scripts
         [SerializeField] private RectTransform _levelFailedPanel;
         [SerializeField] private Button _nextLevelButton;
         [SerializeField] private Button _restartLevelButton;
+
+        private Vector2 _screenSize;
 
         private void Awake()
         {

@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class TileClickHandler : MonoBehaviour
@@ -18,7 +17,7 @@ public class TileClickHandler : MonoBehaviour
     {
         _tilesRow = tilesRow;
         tiles = GetComponentsInChildren<Tile>().ToList<Tile>();
-        _tilesCount= tiles.Count;
+        _tilesCount = tiles.Count;
         GetComponentsInChildren<Transform>().ToList().ForEach(t => t.AddComponent<RectTransform>());
         enabled = true;
     }
