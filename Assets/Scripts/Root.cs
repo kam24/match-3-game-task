@@ -21,6 +21,9 @@ namespace Assets.Scripts
         private void Awake()
         {
             _tileClickHandler.Init(_tilesRow);
+#if PLATFORM_ANDROID
+            Application.targetFrameRate = 60;
+#endif
         }
 
         private void OnEnable()
