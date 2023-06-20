@@ -27,11 +27,14 @@ public class TilesStack : MonoBehaviour, IApplyButton
         });
 
         Vector3 lastTilePosition = transform.position;
+        int layer = transforms.Count;
+        transform.GetComponent<Tile>().SetLayer(layer--);
         _otherTilesPrefabs.ForEach(tile =>
         {
             Vector3 position = lastTilePosition + GetDirection() * _offset + Vector3.forward * _offset;
             Tile newTile = (Tile)PrefabUtility.InstantiatePrefab(tile, transform);
             newTile.transform.position = position;
+            newTile.SetLayer(layer--);
             lastTilePosition = newTile.transform.position;
         });
     }
@@ -43,7 +46,7 @@ public class TilesStack : MonoBehaviour, IApplyButton
         transform.GetComponent<Tile>().SetLayer(count);
         int layer = count - 1;
         transforms.ToList().ForEach(t =>
-        {            
+        {
             if (t.TryGetComponent<Tile>(out Tile tile))
             {
                 t.transform.SetParent(transform.parent);

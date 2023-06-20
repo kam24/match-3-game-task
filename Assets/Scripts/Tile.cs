@@ -6,22 +6,21 @@ using UnityEngine.Tilemaps;
 using Sequence = DG.Tweening.Sequence;
 
 [RequireComponent(typeof(BoxCollider2D), typeof(SpriteRenderer))]
-public class Tile : MonoBehaviour
+public class Tile : MonoBehaviour, IApplyButton
 {
     [SerializeField] private TileData _tileData;
-    [SerializeField] private SpriteRenderer _icon;
     [SerializeField] private SpriteRenderer _bleach;
     [SerializeField] private Color _hiddenColor;
-    [SerializeField] private Transform _target;
+    [SerializeField] private int _layer = -1;
 
-    public int Layer { get; private set; }
+    public int Layer => _layer;
     public TileData Data => _tileData;
+
+    private SpriteRenderer _spriteRenderer;
 
     private BoxCollider2D _collider;
     private Bounds _bounds;
     private float _boxCastSizePercent = 0.9f;
-
-    private SpriteRenderer _spriteRenderer;
 
     private bool _isActive = true;
 
@@ -41,7 +40,7 @@ public class Tile : MonoBehaviour
     public void SetLayer(int layer)
     {
         if (layer >= 0)
-            Layer = layer;
+            _layer = layer;
     }
 
     public void TryActivate()
@@ -50,7 +49,6 @@ public class Tile : MonoBehaviour
         {
             _isActive = true;
             _spriteRenderer.color = Color.white;
-            _icon.color = Color.white;
         }
     }
 
@@ -58,7 +56,6 @@ public class Tile : MonoBehaviour
     {
         _isActive = false;
         _spriteRenderer.color = _hiddenColor;
-        _icon.color = _hiddenColor;
     }
 
     public void Withdraw()
@@ -101,26 +98,23 @@ public class Tile : MonoBehaviour
 
     private void Awake()
     {
-        Layer = GetComponentInParent<TilemapRenderer>().sortingOrder;
         _collider = GetComponent<BoxCollider2D>();
-        _bounds = _collider.bounds;
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _bounds = _collider.bounds;
+        if (_layer < 0)
+            SetLayer(GetComponentInParent<TilemapRenderer>().sortingOrder);
         OnValidate();
     }
 
     private void OnValidate()
     {
-        if (_icon != null)
-            _icon.sprite = _tileData != null ? _tileData.Icon : null;
-
+        GetComponent<SpriteRenderer>().sprite = _tileData != null ? _tileData.Icon : null;
     }
 
     private void OnMouseDown()
     {
         if (_isActive)
-        {
             Clicked?.Invoke(this);
-        }
     }
 
     private void Start()
@@ -153,5 +147,10 @@ public class Tile : MonoBehaviour
         return DOTween.Sequence()
             .Append(transform.DOMoveX(transform.position.x + 0.5f, _jumpDuration / 2))
             .Append(transform.DOMove(target, _jumpDuration / 2));
+    }
+
+    public void Apply()
+    {
+        OnValidate();
     }
 }

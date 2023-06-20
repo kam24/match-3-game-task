@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Tile 2
   m_EditorClassIdentifier: 
   _id: 2
-  _icon: {fileID: -47847194, guid: 8211fc9d9d18ca941902a9988785a77c, type: 3}
+  _icon: {fileID: 21300000, guid: e6beb41f86f64b441b65f2b98de7b166, type: 3}
